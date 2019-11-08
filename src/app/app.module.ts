@@ -42,6 +42,8 @@ import { Md5Component } from './md5/md5.component';
 import { TwoPanelComponent } from './two-panel/two-panel.component';
 import { InputTextareaComponent } from './input-textarea/input-textarea.component';
 import { StrlenComponent } from './strlen/strlen.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,8 @@ import { StrlenComponent } from './strlen/strlen.component';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
