@@ -37,7 +37,7 @@ handlers:
   upload: dist/laneviss-com/.*
 
 # Routing for service worker files serve directly
-- url: /(manifest\.json|ngsw\.json|ngsw-worker\.js|safety-worker\.js|worker-basic\.min\.js|ngsw_worker\.es6\.js\.map)
+- url: /(manifest\.json|manifest\.webmanifest|ngsw\.json|ngsw-worker\.js|safety-worker\.js|worker-basic\.min\.js|ngsw_worker\.es6\.js\.map)
   secure: always
   redirect_http_response_code: 301
   static_files: dist/laneviss-com/\1
