@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  height: 100%;
+}
+.content {
+  padding: 1em;
+  flex: 2;
+  display: flex;
+}
+.main-toolbar {
+  display: flex;
+}
+mat-sidenav {
+  min-width: 250px;
+}
+mat-sidenav h1 {
+  padding-left: 16px;
+}
+mat-sidenav h1 small, main-toolbar h1 small {
+  font-size: 14px;
+}
+mat-sidenav-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.main-toolbar h1 {
+  padding-left: 16px;
+}
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+}

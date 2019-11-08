@@ -1,0 +1,11 @@
+<app-two-panel>
+  <div class="first">
+    <app-input-textarea placeHolder="Content to be strlen'd" (inputData)="onInputChanged($event)"></app-input-textarea>
+  </div>
+  <div class="second">
+    <p *ngFor="let data of outputData">
+      {{ data }}
+    </p>
+    <button mat-button *ngIf="outputData.length > 0" (click)="outputData=[]">clear</button>
+  </div>
+</app-two-panel>

@@ -1,0 +1,4 @@
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>{{ placeHolder }}</mat-label>
+  <textarea matInput [placeholder]="placeHolder" [(ngModel)]="data" (keyup)="inputData.emit(data)"></textarea>
+</mat-form-field>
