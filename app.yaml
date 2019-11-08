@@ -7,8 +7,6 @@ handlers:
   redirect_http_response_code: 301
   static_files: dist/laneviss-com/\1
   upload: dist/laneviss-com/.*
-#  http_headers:
-#    content-type: text/javascript
 
 # Routing for bundle maps to serve directly
 - url: /((?:runtime|main|polyfills|styles|vendor)-?(?:es5|es2015)\.[a-z0-9]+\.js\.map)
