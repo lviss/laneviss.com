@@ -1,17 +1,17 @@
-runtime: python27
-api_version: 1
-threadsafe: true
+runtime: nodejs10
 
 handlers:
 # Routing for bundles to serve directly
-- url: /((?:runtime|main|polyfills|styles|vendor)\.[a-z0-9]+\.js)
+- url: /((?:runtime|main|polyfills|styles|vendor)-?(?:es5|es2015)\.[a-z0-9]+\.js)
   secure: always
   redirect_http_response_code: 301
   static_files: dist/laneviss-com/\1
   upload: dist/laneviss-com/.*
+#  http_headers:
+#    content-type: text/javascript
 
 # Routing for bundle maps to serve directly
-- url: /((?:runtime|main|polyfills|styles|vendor)\.[a-z0-9]+\.js\.map)
+- url: /((?:runtime|main|polyfills|styles|vendor)-?(?:es5|es2015)\.[a-z0-9]+\.js\.map)
   secure: always
   redirect_http_response_code: 301
   static_files: dist/laneviss-com/\1
@@ -19,6 +19,13 @@ handlers:
 
 # Routing for a prod styles.bundle.css to serve directly
 - url: /(styles\.[a-z0-9]+\.css)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: dist/laneviss-com/\1
+  upload: dist/laneviss-com/.*
+
+# Routing for fonts to serve directly
+- url: /(Roboto-[a-zA-Z]+\.[a-z0-9]+\.woff2?)
   secure: always
   redirect_http_response_code: 301
   static_files: dist/laneviss-com/\1
