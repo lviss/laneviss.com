@@ -1,0 +1,11 @@
+<mat-form-field appearance="outline">
+	<mat-label>Notepad</mat-label>
+	<textarea
+    placeHolder="Notepad"
+    [(ngModel)]="outputData" (keyup)="onInputChanged(outputData)"
+		matInput
+		cdkTextareaAutosize
+		cdkAutosizeMinRows="5">
+	</textarea>
+</mat-form-field>
+<button mat-button *ngIf="outputData.length > 0" (click)="outputData=[]">clear</button>

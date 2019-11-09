@@ -1,0 +1,17 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+::ng-deep .mat-form-field-wrapper {
+  padding: 0;
+}
+.error {
+  background-color: red;
+  color: white;
+  font-family: monospace;
+}
+::ng-deep .segment-key {
+  color: #B1E783 !important;
+}

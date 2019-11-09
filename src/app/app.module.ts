@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 //Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -44,6 +45,10 @@ import { InputTextareaComponent } from './input-textarea/input-textarea.componen
 import { StrlenComponent } from './strlen/strlen.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { UrlencodeComponent } from './urlencode/urlencode.component';
+import { IpComponent } from './ip/ip.component';
+import { JsonFormatterComponent } from './json-formatter/json-formatter.component';
+import { NotepadComponent } from './notepad/notepad.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,11 @@ import { environment } from '../environments/environment';
     Md5Component,
     TwoPanelComponent,
     InputTextareaComponent,
-    StrlenComponent
+    StrlenComponent,
+    UrlencodeComponent,
+    IpComponent,
+    JsonFormatterComponent,
+    NotepadComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +99,8 @@ import { environment } from '../environments/environment';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgxJsonViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
