@@ -50,6 +50,7 @@ import { UrlencodeComponent } from './urlencode/urlencode.component';
 import { IpComponent } from './ip/ip.component';
 import { JsonFormatterComponent } from './json-formatter/json-formatter.component';
 import { NotepadComponent } from './notepad/notepad.component';
+import { PstComponent } from './pst/pst.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { NotepadComponent } from './notepad/notepad.component';
     UrlencodeComponent,
     IpComponent,
     JsonFormatterComponent,
-    NotepadComponent
+    NotepadComponent,
+    PstComponent
   ],
   imports: [
     BrowserModule,

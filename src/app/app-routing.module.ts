@@ -8,6 +8,7 @@ import { UrlencodeComponent } from './urlencode/urlencode.component';
 import { IpComponent } from './ip/ip.component';
 import { NotepadComponent } from './notepad/notepad.component';
 import { JsonFormatterComponent } from './json-formatter/json-formatter.component';
+import { PstComponent } from './pst/pst.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'ip', component: IpComponent },
   { path: 'notepad', component: NotepadComponent },
   { path: 'json-formatter', component: JsonFormatterComponent },
+  { path: 'pst', component: PstComponent },
 ];
 
 @NgModule({

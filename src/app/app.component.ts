@@ -21,7 +21,8 @@ export class AppComponent {
     'urlencode',
     'ip',
     'notepad',
-    'json-formatter'
+    'json-formatter',
+    'pst'
   ];
 
   constructor(private router: Router, private breakpointObserver: BreakpointObserver) {
