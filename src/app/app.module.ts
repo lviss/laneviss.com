@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { HttpClientModule } from '@angular/common/http';
 
 //Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -100,7 +101,8 @@ import { NotepadComponent } from './notepad/notepad.component';
     MatSortModule,
     MatPaginatorModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgxJsonViewerModule
+    NgxJsonViewerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
