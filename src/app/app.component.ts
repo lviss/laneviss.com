@@ -5,6 +5,9 @@ import { MatSidenav } from '@angular/material';
 import { map, filter} from 'rxjs/operators';
 import { NavItemsService } from './nav-items.service';
 import { BookmarksService } from './bookmarks.service';
+import { SwUpdate } from '@angular/service-worker';
+import { interval } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +28,9 @@ export class AppComponent implements OnDestroy {
     private media: MediaMatcher,
     private router: Router, 
     private navItemsService: NavItemsService,
-    private bookmarksService: BookmarksService
+    private bookmarksService: BookmarksService,
+    private swUpdate: SwUpdate,
+    public snackBar: MatSnackBar,
   ) {
     this.navItems = navItemsService.get();
     this.bookmarks = bookmarksService.get();
@@ -41,6 +46,21 @@ export class AppComponent implements OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+
+    // check for service worker updates
+    if (swUpdate.isEnabled) {
+      interval(60 * 60 * 1000).subscribe(() => swUpdate.checkForUpdate()
+        .then(() => console.log('checking for updates')));
+    }
+    this.swUpdate.available.subscribe(event => this.promptUpdate());
+  }
+
+  private promptUpdate(): void {
+    console.log('updating to new version');
+    let snack = this.snackBar.open('A new version is available!', 'Update', { duration: undefined });
+    snack.onAction().subscribe(() => {
+      this.swUpdate.activateUpdate().then(() => document.location.reload());
+    });
   }
 
   ngOnDestroy(): void {
