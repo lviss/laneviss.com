@@ -17,11 +17,19 @@ import { MatSnackBar } from '@angular/material';
 export class AppComponent implements OnDestroy {
   @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
 
-  route;
+  currentNavItem;
   navItems;
   bookmarks;
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
+  themeClass = "theme";
+  availableThemes = [{
+    label: "Light",
+    class: "theme"
+  },{
+    label: "Dark",
+    class: "dark-theme"
+  }];
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef, 
@@ -37,7 +45,7 @@ export class AppComponent implements OnDestroy {
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(event => {
-      this.route = this.navItems.find(i => i.path === this.router.url).label;
+      this.currentNavItem = this.navItems.find(i => i.path === this.router.url);
       if (this.mobileQuery.matches)
         this.sidenav.close();
     });
@@ -53,6 +61,11 @@ export class AppComponent implements OnDestroy {
         .then(() => console.log('checking for updates')));
     }
     this.swUpdate.available.subscribe(event => this.promptUpdate());
+
+    // get theme from localstorage, if set
+    let themeClassFromStorage = localStorage.getItem('themeClass');
+    if (themeClassFromStorage)
+      this.themeClass = themeClassFromStorage;
   }
 
   private promptUpdate(): void {
@@ -61,6 +74,10 @@ export class AppComponent implements OnDestroy {
     snack.onAction().subscribe(() => {
       this.swUpdate.activateUpdate().then(() => document.location.reload());
     });
+  }
+
+  onThemeChanged(event) {
+    localStorage.setItem('themeClass', event.value);
   }
 
   ngOnDestroy(): void {

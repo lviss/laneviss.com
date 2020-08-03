@@ -1,31 +1,38 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches">
-    <h1>Lane Viss<small>.com</small></h1>
-    <mat-toolbar><h3>Tools</h3></mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item *ngFor="let item of navItems" routerLink="{{ item.path }}">
-        <mat-icon>{{ item.icon }}</mat-icon>
-        {{ item.label }}
-      </a>
-		</mat-nav-list>
-    <mat-toolbar><h3>Bookmarks</h3></mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item *ngFor="let item of bookmarks" href="{{ item.url }}" target="_blank">
-        <img src="{{ item.icon }}" height="24" />
-        {{ item.label }}
-      </a>
-		</mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="main-toolbar">
-      <button mat-icon-button aria-label="Menu" (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <h1>{{ route }}</h1>
-      <span class="spacer"></span>
-    </mat-toolbar>
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div [className]="themeClass" class="mat-app-background">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches">
+      <h1>Lane Viss<small>.com</small></h1>
+      <mat-toolbar>Tools</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let item of navItems" routerLink="{{ item.path }}" [class.selected]="item.path === currentNavItem?.path">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          {{ item.label }}
+        </a>
+      </mat-nav-list>
+      <mat-toolbar>Bookmarks</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let item of bookmarks" href="{{ item.url }}" target="_blank">
+          <img src="{{ item.icon }}" height="24" />
+          {{ item.label }}
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="main-toolbar">
+        <button mat-icon-button aria-label="Menu" (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <h1>{{ currentNavItem?.label }}</h1>
+        <span class="spacer"></span>
+        <mat-select [(value)]="themeClass" (selectionChange)="onThemeChanged($event)">
+          <mat-option *ngFor="let theme of availableThemes" [value]="theme.class">
+            {{ theme.label }}
+          </mat-option>
+        </mat-select>
+      </mat-toolbar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

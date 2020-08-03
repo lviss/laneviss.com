@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '~@angular/material/theming';
+
+// always include only once per project
+@include mat-core();
+
+// import our custom theme
+@import 'theme.scss';
+@import 'app/app.component.scss';
+
+// specify theme class eg: <body class="theme"> ... </body>
+.theme {
+  @include angular-material-theme($theme);
+  @include app-component-theme($theme);
+}
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+  @include app-component-theme($dark-theme);
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
