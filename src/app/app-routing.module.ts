@@ -12,8 +12,7 @@ import { PstComponent } from './pst/pst.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'md5', component: Md5Component },
   { path: 'strlen', component: StrlenComponent },
   { path: 'urlencode', component: UrlencodeComponent },

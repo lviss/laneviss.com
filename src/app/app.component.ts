@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, filter} from 'rxjs/operators';
+import { NavItemsService } from './nav-items.service';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +15,14 @@ export class AppComponent {
   @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
 
   route;
-  navItems = [
-    'home',
-    'md5',
-    'strlen',
-    'urlencode',
-    'ip',
-    'notepad',
-    'json-formatter',
-    'pst'
-  ];
+  navItems;
 
-  constructor(private router: Router, private breakpointObserver: BreakpointObserver) {
+  constructor(private router: Router, private breakpointObserver: BreakpointObserver, private navItemsService: NavItemsService) {
+    this.navItems = navItemsService.get();
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(event => {
-      this.route = this.router.url;
+      this.route = this.navItems.find(i => i.path === this.router.url).label;
       this.sidenav.close();
     });
   }
@@ -38,4 +31,5 @@ export class AppComponent {
   .pipe(
     map(result => result.matches)
   );
+
 }
