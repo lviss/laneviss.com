@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
-  @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
+  @ViewChild('sidenav') sidenav: MatSidenav;
 
   currentNavItem;
   navItems;
