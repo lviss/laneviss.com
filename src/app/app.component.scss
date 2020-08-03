@@ -36,6 +36,6 @@ mat-sidenav-content {
   display: flex;
   flex-direction: column;
 }
-mat-nav-list a mat-icon {
+mat-nav-list a mat-icon, mat-nav-list a img {
   margin-right: 1em;
 }

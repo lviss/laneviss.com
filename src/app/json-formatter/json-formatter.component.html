@@ -3,7 +3,7 @@
     <app-input-textarea placeHolder="Content to be formatted" (inputData)="onInputChanged($event)"></app-input-textarea>
   </div>
   <div class="second">
-    <ngx-json-viewer [json]="json"></ngx-json-viewer>
+    <ngx-json-viewer *ngIf="json" [json]="json"></ngx-json-viewer>
     <p class="error" *ngIf="error">Error: {{ error }}</p>
   </div>
 </app-two-panel>

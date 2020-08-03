@@ -1,35 +1,49 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, ViewChild } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
 import { MatSidenav } from '@angular/material';
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
 import { map, filter} from 'rxjs/operators';
 import { NavItemsService } from './nav-items.service';
+import { BookmarksService } from './bookmarks.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
 
   route;
   navItems;
+  bookmarks;
+  mobileQuery: MediaQueryList;
+  private _mobileQueryListener: () => void;
 
-  constructor(private router: Router, private breakpointObserver: BreakpointObserver, private navItemsService: NavItemsService) {
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef, 
+    private media: MediaMatcher,
+    private router: Router, 
+    private navItemsService: NavItemsService,
+    private bookmarksService: BookmarksService
+  ) {
     this.navItems = navItemsService.get();
+    this.bookmarks = bookmarksService.get();
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(event => {
       this.route = this.navItems.find(i => i.path === this.router.url).label;
-      this.sidenav.close();
+      if (this.mobileQuery.matches)
+        this.sidenav.close();
     });
+
+    // determine if we're on a small screen
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-  .pipe(
-    map(result => result.matches)
-  );
-
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
 }
