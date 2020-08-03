@@ -1,13 +1,13 @@
 import { ChangeDetectorRef, Component, OnDestroy, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import { map, filter} from 'rxjs/operators';
 import { NavItemsService } from './nav-items.service';
 import { BookmarksService } from './bookmarks.service';
 import { SwUpdate } from '@angular/service-worker';
 import { interval } from 'rxjs';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
