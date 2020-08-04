@@ -80,6 +80,10 @@ export class AppComponent implements OnDestroy {
     localStorage.setItem('themeClass', event.value);
   }
 
+  plant() {
+    this.snackBar.open('That is just a potted plant that keeps this space feeling fresh.', 'Got it', { duration: undefined });
+  }
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
