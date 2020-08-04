@@ -22,7 +22,7 @@ export class AppComponent implements OnDestroy {
   bookmarks;
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
-  themeClass = "theme";
+  themeClass = "dark-theme";
   availableThemes = [{
     label: "Light",
     class: "theme"
