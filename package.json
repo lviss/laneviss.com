@@ -24,7 +24,7 @@
     "@angular/router": "~10.0.7",
     "@angular/service-worker": "~10.0.7",
     "debounce": "^1.2.0",
-    "md5": "^2.2.1",
+    "md5": "^2.3.0",
     "ngx-json-viewer": "^2.4.0",
     "roboto-fontface": "^0.10.0",
     "rxjs": "~6.5.3",
