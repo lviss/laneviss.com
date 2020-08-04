@@ -9,10 +9,6 @@ export class NavItemsService {
 
   get() {
     return [{
-      path: '/',
-      label: 'Home',
-      icon: 'home'
-    },{
       path: '/md5',
       label: 'MD5',
       icon: 'flaky'

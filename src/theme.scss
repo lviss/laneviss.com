@@ -1,13 +1,47 @@
 @import '~@angular/material/theming';
 
+// the light blue that matches the icon:
+$light-blue: (
+    50 : #e9f1ff,
+    100 : #c7dcff,
+    200 : #a2c5ff,
+    300 : #7cadff,
+    400 : #609cff,
+    500 : #448aff,
+    600 : #3e82ff,
+    700 : #3577ff,
+    800 : #2d6dff,
+    900 : #1f5aff,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #cedaff,
+    A700 : #b5c6ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
 // define 3 theme color
 // mat-palette accepts $palette-name, main, lighter and darker variants
 $theme-primary: mat-palette($mat-purple, 700, 300, 900);
-$theme-accent: mat-palette($mat-lime);
+$theme-accent: mat-palette($light-blue);
 $theme-warn: mat-palette($mat-red, 700);
 
 $dark-theme-primary: mat-palette($mat-green, 700, 300, 900);
-$dark-theme-accent: mat-palette($mat-lime);
+$dark-theme-accent: mat-palette($light-blue);
 $dark-theme-warn: mat-palette($mat-red, 700);
 
 // create theme (use mat-dark-theme for themes with dark backgrounds)

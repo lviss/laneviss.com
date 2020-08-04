@@ -34,7 +34,7 @@ export class AppComponent implements OnDestroy {
   constructor(
     private changeDetectorRef: ChangeDetectorRef, 
     private media: MediaMatcher,
-    private router: Router, 
+    public router: Router, 
     private navItemsService: NavItemsService,
     private bookmarksService: BookmarksService,
     private swUpdate: SwUpdate,

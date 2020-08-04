@@ -8,7 +8,7 @@
   $background: map-get($theme, background);
 
   .mat-list-item.selected, .mat-list-item.selected:focus, .mat-list-item.selected:active {
-    background-color: mat-color($primary);
+    background-color: mat-color($accent);
   }
   .mat-list-item.selected .mat-list-item-content {
     color: mat-color($background, background);
@@ -60,7 +60,17 @@ mat-nav-list a mat-icon, mat-nav-list a img {
 mat-select {
   width: auto;
 }
+mat-nav-list {
+  padding-top: 0;
+}
 mat-card.mat-card {
   padding-bottom: 2em;
 }
-
+.sidebar-top {
+  height: 128px;
+}
+.sidebar-logo {
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+}
