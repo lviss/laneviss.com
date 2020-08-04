@@ -6,6 +6,6 @@
     <p *ngFor="let data of outputData">
       {{ data }}
     </p>
-    <button mat-button *ngIf="outputData.length > 0" (click)="outputData=[]">clear</button>
+    <button mat-raised-button color="accent" *ngIf="outputData.length > 0" (click)="outputData=[]">clear</button>
   </div>
 </app-two-panel>
