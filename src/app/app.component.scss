@@ -8,7 +8,7 @@
   $background: map-get($theme, background);
 
   .mat-list-item.selected, .mat-list-item.selected:focus, .mat-list-item.selected:active {
-    background-color: mat-color($accent);
+    background-color: mat-color($primary);
   }
   .mat-list-item.selected .mat-list-item-content {
     color: mat-color($background, background);
@@ -29,6 +29,8 @@
 }
 mat-sidenav {
   min-width: 250px;
+  max-width:75vw;
+  width: 350px;
 }
 mat-sidenav h1 {
   padding-left: 16px;
