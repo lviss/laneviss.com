@@ -25,13 +25,13 @@ export class BookmarksService {
       label: 'Twitch',
       icon: 'assets/twitch.png'
     },{
-      url: 'https://music.google.com',
-      label: 'Google Music',
-      icon: 'assets/music.ico'
+      url: 'https://music.youtube.com',
+      label: 'Youtube Music',
+      icon: 'assets/youtube-music.png'
     },{
-      url: 'https://drive.google.com',
-      label: 'Google Drive',
-      icon: 'assets/drive.ico'
+      url: 'https://recipes.laneviss.com',
+      label: 'Recipes',
+      icon: 'assets/recipes.png'
     },{
       url: 'http://regexr.com',
       label: 'Regexr',

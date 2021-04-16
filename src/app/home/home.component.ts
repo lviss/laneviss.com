@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookmarksService } from '../bookmarks.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  bookmarks;
+  constructor(
+    private bookmarksService: BookmarksService,
+  ) {
+    this.bookmarks = bookmarksService.get(); 
+  }
 
   ngOnInit() {
   }
